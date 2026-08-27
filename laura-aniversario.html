@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Laura, com amor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-color: #fce4ec;
+    --paper: #fffdfa;
+    --glass: rgba(255, 255, 255, 0.75);
+    --ink: #1E293B;
+    
+    --blue-light: #A7D3F2;
+    --blue: #6FA8D8;
+    --blue-vivid: #4A90E2;
+    --blue-dark: #2C5282;
+    
+    --pink-light: #FBE1EF;
+    --pink: #F4B8D4;
+    --pink-vivid: #E83F8C;
+    --pink-dark: #B83280;
+    
+    --line: rgba(74, 144, 226, 0.25);
+  }
+  
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--pink-light); }
+  ::-webkit-scrollbar-thumb { background: var(--pink-vivid); border-radius: 5px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--pink-dark); }
+  
+  body {
+    margin: 0;
+    background: linear-gradient(-45deg, #F0F7FB, #FDF5F7, #fce4ec, #e3f2fd);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+  
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  a { color: var(--pink-vivid); text-decoration: none; font-weight: 500; transition: color 0.3s;}
+  a:hover { color: var(--blue-vivid); }
+  ::selection { background: var(--pink-vivid); color: #fff; }
+
+  /* EFEITOS DE FLUTUAÇÃO */
+  .floating-icons {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .floating-icons span {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.25;
+    animation: floatUp 20s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+    display: flex; align-items: center; justify-content: center;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
+  }
+  .floating-icons img { width: 45px; height: auto; opacity: 0.85; }
+  
+  .floating-icons span:nth-child(1) { left: 5%; animation-duration: 22s; animation-delay: 1s; font-size: 2rem;}
+  .floating-icons span:nth-child(2) { left: 25%; animation-duration: 18s; animation-delay: 5s; }
+  .floating-icons span:nth-child(3) { left: 45%; animation-duration: 25s; animation-delay: 2s; font-size: 2.5rem;}
+  .floating-icons span:nth-child(4) { left: 65%; animation-duration: 19s; animation-delay: 8s; }
+  .floating-icons span:nth-child(5) { left: 85%; animation-duration: 24s; animation-delay: 0s; font-size: 1.8rem;}
+  .floating-icons span:nth-child(6) { left: 15%; animation-duration: 21s; animation-delay: 12s; font-size: 1.2rem;}
+  .floating-icons span:nth-child(7) { left: 75%; animation-duration: 26s; animation-delay: 7s; font-size: 1.5rem;}
+
+  @keyframes floatUp {
+    0% { transform: translateY(110vh) translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.4; }
+    50% { transform: translateY(50vh) translateX(30px) rotate(180deg); }
+    90% { opacity: 0.4; }
+    100% { transform: translateY(-10vh) translateX(-30px) rotate(360deg); opacity: 0; }
+  }
+
+  section { position: relative; z-index: 1; padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; }
+
+  .glass-box {
+    background: var(--glass);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 28px;
+    padding: 2.5rem;
+    box-shadow: 0 25px 50px -12px rgba(227, 103, 158, 0.18);
+  }
+
+  /* HERO */
+  .hero { min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .mark { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.1rem; color: var(--pink-vivid); letter-spacing: 0.1em; margin-bottom: 2rem; font-weight: 600; text-transform: uppercase;}
+  .hero h1 { font-size: clamp(2.8rem, 8vw, 5.5rem); line-height: 1.05; margin: 0 0 1rem 0; color: var(--blue-dark); text-shadow: 2px 2px 10px rgba(255,255,255,0.8); }
+  .hero h1 em { font-style: italic; color: var(--pink-vivid); }
+  .hero p.sub { font-size: 1.1rem; color: #475569; max-width: 40ch; margin: 0 auto 3rem auto; line-height: 1.6; font-weight: 500;}
+  
+  .bloom-wrap { width: 160px; height: 160px; margin-bottom: 2rem; transition: all .8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  .bloom-wrap:hover { transform: scale(1.1) rotate(5deg); }
+  .bloom-wrap.full-bloom { filter: drop-shadow(0 0 35px rgba(227, 103, 158, 0.5)); transform: scale(1.2); }
+
+  /* CONTAGEM REGRESSIVA */
+  .countdown { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .countdown .unit { display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 18px; border: 1px solid #fff; box-shadow: 0 10px 25px rgba(227,103,158,0.1); min-width: 85px; backdrop-filter: blur(6px);}
+  .countdown .num { font-family: 'Fraunces', serif; font-size: 2.5rem; font-weight: 600; color: var(--blue-vivid); line-height: 1; font-variant-numeric: tabular-nums; }
+  .countdown .lbl { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--pink-vivid); margin-top: 0.5rem; font-weight: 600; }
+  
+  .today-banner { display: none; font-family: 'Fraunces', serif; font-style: italic; font-weight: 700; font-size: clamp(2.5rem, 9vw, 4rem); color: var(--pink-vivid); text-shadow: 0 4px 20px rgba(227, 103, 158, 0.4); animation: pulse-today 1.5s ease-in-out infinite; margin-top: 1rem; }
+  @keyframes pulse-today { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+
+  .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-vivid); display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; font-weight: 600;}
+  .eyebrow::before { content: ""; width: 25px; height: 2px; background: var(--pink-vivid); border-radius: 2px;}
+  .section-title { font-size: clamp(2rem, 5vw, 3rem); margin: 0 0 2.5rem 0; color: var(--blue-dark); position: relative; z-index: 1; }
+
+  /* CARTA COM ALINHAMENTO DA PAUTA */
+  .letter-wrap { text-align: center; perspective: 1000px; position: relative; margin-top: 1.5rem; }
+  .envelope { margin: 0 auto; width: min(340px, 85vw); aspect-ratio: 3/2; background: linear-gradient(135deg, var(--pink-light), #F0A0C6); border-radius: 12px; position: relative; cursor: pointer; box-shadow: 0 20px 50px -10px rgba(227,103,158,0.4); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 2px solid rgba(255,255,255,0.7); z-index: 5;}
+  .envelope:hover { transform: translateY(-8px) rotate(-1.5deg); box-shadow: 0 30px 60px -15px rgba(227,103,158,0.6); }
+  .envelope .flap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; clip-path: polygon(0 0, 50% 55%, 100% 0); background: linear-gradient(200deg, var(--pink-vivid), var(--pink)); border-radius: 12px 12px 0 0; transition: transform 0.6s ease; transform-origin: top; }
+  .envelope.open-anim .flap { transform: rotateX(180deg); z-index: 1;}
+  .envelope .seal { position: absolute; top: 52%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; border-radius: 50%; background: var(--blue-vivid); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-style: italic; color: #fff; font-size: 1.8rem; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 3px solid #fff; transition: opacity 0.3s; }
+  .envelope.open-anim .seal { opacity: 0; }
+  
+  .letter-paper { 
+    display: none; 
+    background-color: var(--paper);
+    background-image: 
+      linear-gradient(90deg, transparent 40px, rgba(232, 63, 140, 0.25) 40px, rgba(232, 63, 140, 0.25) 42px, transparent 42px),
+      linear-gradient(var(--line) 1px, transparent 1px);
+    background-size: 100% 2.4rem; 
+    background-position: 0 0.8rem;
+    border-radius: 16px; 
+    padding: 3.5rem 2rem 2.4rem 4rem; 
+    margin-top: 2rem;
+    text-align: left; 
+    box-shadow: 0 25px 60px -15px rgba(74,144,226,0.25); 
+    border: 1px solid rgba(0,0,0,0.06); 
+    position: relative; 
+    z-index: 2;
+  }
+  .letter-paper.open { display: block; animation: paperRise 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+  @keyframes paperRise { 0% { opacity: 0; transform: translateY(40px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+  
+  .letter-paper p { 
+    font-family: 'Fraunces', serif; 
+    font-size: 1.05rem; 
+    line-height: 2.4rem; 
+    color: #334155; 
+    margin: 0 0 2.4rem 0; 
+    padding: 0; 
+    position: relative; 
+    z-index: 2; 
+  }
+  .letter-paper .shout { font-weight: 700; color: var(--pink-vivid); background: rgba(244, 184, 212, 0.35); padding: 2px 6px; border-radius: 4px;}
+  .letter-signoff { font-style: italic; font-size: 1.2rem; color: var(--blue-vivid); font-weight: 700; text-transform: uppercase; text-align: right; margin-bottom: 0 !important; }
+
+  .washi-tape { position: absolute; top: -14px; left: 50%; transform: translateX(-50%) rotate(-2deg); width: 140px; height: 32px; background: linear-gradient(90deg, rgba(232,63,140,0.75), rgba(74,144,226,0.75)); box-shadow: 0 3px 6px rgba(0,0,0,0.1); z-index: 4; border-radius: 2px; backdrop-filter: blur(2px);}
+  .sticker { position: absolute; z-index: 4; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));}
+  .sticker:hover { transform: scale(1.15) rotate(0deg) !important; filter: drop-shadow(4px 8px 12px rgba(0,0,0,0.22)); }
+  .sticker-salsicha { top: -35px; right: 15px; width: 85px; transform: rotate(14deg); }
+  .sticker-stitch { bottom: -25px; left: 15px; width: 90px; transform: rotate(-14deg); }
+
+  /* GALERIA CINEMATOGRÁFICA 3D */
+  #galeria {
+    max-width: 1000px;
+    padding: 5rem 1rem;
+  }
+  
+  .cinema-wrapper {
+    position: relative;
+    background: #0f172a;
+    border-radius: 32px;
+    padding: 3rem 1rem 2rem 1rem;
+    box-shadow: 0 30px 80px rgba(15, 23, 42, 0.5);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .cinema-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(50px) brightness(0.4);
+    opacity: 0.8;
+    transition: background-image 0.8s ease-in-out;
+    transform: scale(1.2);
+    z-index: 0;
+  }
+
+  .cinema-stage {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    perspective: 1000px;
+  }
+
+  .cinema-card {
+    position: absolute;
+    width: min(320px, 70vw);
+    aspect-ratio: 3/4;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    border: 2px solid rgba(255,255,255,0.2);
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+    background: #1e293b;
+  }
+  
+  .cinema-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+  }
+
+  .cinema-card.active {
+    transform: translateX(0) translateZ(100px) scale(1.05);
+    z-index: 10;
+    opacity: 1;
+    border-color: rgba(255,255,255,0.9);
+    box-shadow: 0 25px 60px rgba(232, 63, 140, 0.4), 0 0 30px rgba(74, 144, 226, 0.3);
+  }
+
+  .cinema-card.prev {
+    transform: translateX(-65%) translateZ(0) rotateY(25deg) scale(0.85);
+    z-index: 5;
+    opacity: 0.6;
+    filter: brightness(0.7);
+  }
+
+  .cinema-card.next {
+    transform: translateX(65%) translateZ(0) rotateY(-25deg) scale(0.85);
+    z-index: 5;
+    opacity: 0.6;
+    filter: brightness(0.7);
+  }
+
+  .cinema-card.far-prev {
+    transform: translateX(-110%) translateZ(-100px) rotateY(40deg) scale(0.65);
+    z-index: 2;
+    opacity: 0.2;
+  }
+
+  .cinema-card.far-next {
+    transform: translateX(110%) translateZ(-100px) rotateY(-40deg) scale(0.65);
+    z-index: 2;
+    opacity: 0.2;
+  }
+
+  .cinema-card.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.5);
+  }
+
+  .cinema-controls {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .cinema-btn {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .cinema-btn:hover {
+    background: var(--pink-vivid);
+    border-color: var(--pink-vivid);
+    transform: scale(1.1);
+  }
+
+  .cinema-counter {
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+
+  /* MÚSICA */
+  .music-card { display: flex; gap: 1.5rem; align-items: center; }
+  .vinyl { width: 80px; height: 80px; border-radius: 50%; flex: none; background: radial-gradient(circle at center, var(--pink-vivid) 0 12%, transparent 13%), repeating-radial-gradient(circle at center, var(--ink) 0 1px, #1E293B 2px 5px); animation: spin 5s linear infinite; animation-play-state: paused; border: 3px solid #fff; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: transform 0.2s;}
+  .vinyl:hover { transform: scale(1.05); }
+  .music-card.playing .vinyl { animation-play-state: running; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  
+  .player-controls { flex: 1; }
+  .music-meta .song { font-family: 'Fraunces', serif; font-size: 1.3rem; margin: 0 0 0.3rem 0; color: var(--blue-dark); font-weight: 700; }
+  .music-meta .artist { margin: 0; font-size: 0.95rem; color: var(--pink-vivid); font-weight: 500;}
+  .player-bar { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+  .player-time { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--blue-vivid); min-width: 3em; text-align: center; font-weight: 600; }
+  .player-seek { flex: 1; accent-color: var(--pink-vivid); cursor: pointer; height: 6px; border-radius: 3px; background: rgba(0,0,0,0.1); outline: none;}
+
+  /* DESIGN NOVO DOS VALES: BILHETES / CUPONS VIP MINIMALISTAS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card-item {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 1.8rem 1.4rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    box-shadow: 0 12px 30px rgba(227, 103, 158, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Borda lateral degradê estilo ticket premium */
+  .card-item::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 6px; height: 100%;
+    background: linear-gradient(180deg, var(--pink-vivid), var(--blue-vivid));
+  }
+
+  .card-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(232, 63, 140, 0.22);
+    border-color: var(--pink-vivid);
+    background: #ffffff;
+  }
+
+  .card-header-tag {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--blue-vivid);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .card-badge {
+    background: rgba(232, 63, 140, 0.12);
+    color: var(--pink-vivid);
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 0.65rem;
+  }
+
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    color: var(--blue-dark);
+    margin: 0 0 0.4rem 0;
+    font-weight: 700;
+  }
+
+  .card-desc {
+    font-size: 0.88rem;
+    color: #475569;
+    margin: 0 0 1.2rem 0;
+    line-height: 1.45;
+    font-weight: 400;
+  }
+
+  .card-footer {
+    border-top: 1px dashed rgba(74, 144, 226, 0.25);
+    padding-top: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--pink-vivid);
+    letter-spacing: 0.05em;
+  }
+
+  .card-footer span.arrow {
+    font-size: 0.9rem;
+    transition: transform 0.3s;
+  }
+
+  .card-item:hover .card-footer span.arrow {
+    transform: translateX(4px);
+    color: var(--blue-vivid);
+  }
+
+  /* BUCKET LIST */
+  .bucket-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; font-size: 1.05rem; color: var(--ink); cursor: pointer; font-weight: 500; padding: 10px; border-radius: 10px; transition: background 0.3s;}
+  .bucket-item:hover { background: rgba(255,255,255,0.6); }
+  .bucket-item input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--pink-vivid); cursor: pointer; }
+  .bucket-extra { margin-top: 2rem; }
+  .bucket-extra label { display: block; font-size: 1rem; font-weight: 600; color: var(--blue-dark); margin-bottom: 0.8rem; }
+  .bucket-extra textarea { width: 100%; height: 110px; border: 2px solid var(--pink-light); border-radius: 14px; padding: 1rem; font-family: 'Work Sans', sans-serif; font-size: 1rem; resize: vertical; outline: none; transition: all 0.3s; background: rgba(255,255,255,0.85); }
+  .bucket-extra textarea:focus { border-color: var(--pink-vivid); box-shadow: 0 0 15px rgba(232, 63, 140, 0.2); background: #fff;}
+  
+  .btn-send {
+    display: block; width: 100%; margin-top: 1.5rem; padding: 1.2rem;
+    background: linear-gradient(135deg, var(--pink-vivid), var(--blue-vivid)); color: white;
+    border: none; border-radius: 14px; font-family: 'Work Sans', sans-serif; font-size: 1.1rem; font-weight: 700;
+    cursor: pointer; text-align: center; box-shadow: 0 10px 25px rgba(227, 103, 158, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .btn-send:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(74, 144, 226, 0.45); background: linear-gradient(135deg, var(--blue-vivid), var(--pink-vivid));}
+
+  /* MODAL */
+  .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 1.5rem; }
+  .modal-overlay.active { display: flex; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; backdrop-filter: blur(0); } to { opacity: 1; backdrop-filter: blur(8px); } }
+
+  .modal-card { background: #fff; border-radius: 28px; padding: 2.2rem 1.8rem; max-width: 420px; width: 100%; text-align: center; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3); border: 4px solid var(--pink-light); transform: scale(0.8); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden;}
+  .modal-overlay.active .modal-card { transform: scale(1); }
+  
+  .modal-card h3 { font-size: 1.6rem; color: var(--pink-vivid); margin: 0 0 0.8rem 0; }
+  .modal-card p { font-size: 1rem; color: #475569; line-height: 1.5; margin-bottom: 1.5rem; }
+
+  .modal-btn { display: inline-block; padding: 1rem 1.5rem; background: var(--blue-vivid); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 1rem; border: none; cursor: pointer; transition: all 0.3s; margin: 0.3rem 0; width: 100%; box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);}
+  .modal-btn:hover { background: var(--blue-dark); transform: translateY(-2px); }
+  .modal-btn.secondary { background: #E2E8F0; color: #475569; box-shadow: none;}
+  .modal-btn.secondary:hover { background: #CBD5E1; }
+
+  footer { text-align: center; padding: 6rem 1.5rem 4rem; position: relative; z-index: 1;}
+  footer .display { font-size: 2rem; font-style: italic; color: var(--pink-vivid); margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(255,255,255,0.8); }
+  footer .sign { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-vivid); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="floating-icons" aria-hidden="true">
+  <span>❤️</span>
+  <span>✨</span>
+  <span><img src="salsicha.png" alt="Salsicha" onerror="this.style.display='none'"></span>
+  <span>💖</span>
+  <span><img src="stitch.png" alt="Stitch" onerror="this.style.display='none'"></span>
+  <span>💍</span>
+  <span>🌸</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="mark">Pedro &amp; Laura</div>
+  
+  <div class="bloom-wrap" id="bloom-wrap">
+    <svg viewBox="0 0 150 150" width="100%" height="100%" aria-hidden="true" style="overflow: visible;">
+      <path d="M75 150 C 75 110, 75 100, 75 78" stroke="#4A90E2" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <g transform="translate(75,64)">
+        <path class="petal" d="M0,0 Q-20,-40 0,-60 Q20,-40 0,0" fill="#E83F8C"/>
+        <path class="petal" d="M0,0 Q40,-30 50,10 Q20,0 0,0" fill="#E83F8C"/>
+        <path class="petal" d="M0,0 Q-40,-30 -50,10 Q-20,0 0,0" fill="#E83F8C"/>
+        <path class="petal" d="M0,0 Q-30,30 -20,50 Q0,30 0,0" fill="#F4B8D4"/>
+        <path class="petal" d="M0,0 Q30,30 20,50 Q0,30 0,0" fill="#F4B8D4"/>
+        <circle cx="0" cy="0" r="10" fill="#FACC15"/>
+      </g>
+    </svg>
+  </div>
+
+  <h1>Para a <em>garota</em> mais<br>incrível do mundo</h1>
+  <p class="sub" id="hero-subtext">02 de setembro é a data mais importante do ano — porque é o dia em que você chegou nele.</p>
+
+  <div class="countdown" id="countdown">
+    <div class="unit" id="cd-month-unit" style="display: none;"><span class="num" id="cd-months">00</span><span class="lbl">meses</span></div>
+    <div class="unit"><span class="num" id="cd-days">00</span><span class="lbl">dias</span></div>
+    <div class="unit"><span class="num" id="cd-hours">00</span><span class="lbl">horas</span></div>
+    <div class="unit"><span class="num" id="cd-mins">00</span><span class="lbl">min</span></div>
+    <div class="unit"><span class="num" id="cd-secs">00</span><span class="lbl">seg</span></div>
+  </div>
+
+  <div id="birthday-message" class="today-banner">É HOJE! FELIZ ANIVERSÁRIO! 🎉</div>
+</section>
+
+<!-- CARTA -->
+<section id="carta">
+  <div class="glass-box">
+    <div class="eyebrow">Uma carta para você</div>
+    <h2 class="section-title">A primeira de muitas</h2>
+    
+    <div class="letter-wrap">
+      <div class="envelope" id="envelope" tabindex="0" role="button">
+        <div class="flap"></div>
+        <div class="seal">L</div>
+      </div>
+      
+      <div class="letter-paper" id="letter-paper">
+        <div class="washi-tape"></div>
+        <img src="salsicha.png" alt="Salsicha" class="sticker sticker-salsicha" id="easter-salsicha" title="Au au!">
+        <img src="stitch.png" alt="Stitch" class="sticker sticker-stitch" id="easter-stitch" title="Aloha!">
+        
+        <p>Meu amorrr, feliz aniversárioooo, estou muito feliz de poder fazer essa carta pra você, pois essa é a primeira carta entre muitas que eu irei fazer, e sinceramente, não poderia começar ela de outro jeito.</p>
+        <p>Meu bemmmm, eu te desejo muitos anos de vida, e que Deus abençoe muito você, e nós. Você é o amor da minha vida e eu não sei como vivi toda a minha vida antes, sem você, pois você é o melhor que já me aconteceu. Então, quero que você seja muito feliz, e irei fazer o meu máximo pra isso acontecer. Então continue sendo essa garota incrível que você é.</p>
+        <p>Além de tudo, eu quero mais uma vez te agradecer, por acima de todos os meus defeitos, me amar, por que mesmo com todos as minhas paranoias e inseguranças, você decidiu abraçar todas, porque mesmo eu sendo estranha, você decidiu ser estranha comigo, por que mesmo com tudo, mesmo me conhecendo cada vez mais, e mesmo com cada coisa que eu já fiz de errado, você mesmo assim, abre esse seu sorrisinho lindo pra falar que me ama da mesma forma como da primeira vez.</p>
+        <p>Você com certeza, é a melhor escolha que eu já fiz na minha vida, eu te admiro desde a primeira vez que te vi, te admiro desde o primeiro riso, te admiro desde o primeiro conversa, te admiro desde o primeiro olhar, te admiro desde o primeiro beijo, te admiro desde o primeiro abraço, e acima de tudo, te admiro por ser simplesmente você.</p>
+        <p>Quero que você saiba que sempre estarei aqui por você, mesmo nas maiores dificuldades, e mesmo nas maiores tristezas, mas claramente também nas maiores alegrias e bençãos. Quero me casar, ter filhos, uma linda casa e viver o resto da minha vida compartilhada com você, pois sei que assim, será a melhor forma de vive-la.</p>
+        <p>Não sei muito mais o que dizer, mas acredito que tenha dado pra entender que <span class="shout">EU TE AMO MUITO MINHA PRINCESA, MAIS DO QUE EU ACHEI QUE SERIA CAPAZ DE AMAR ALGUÉM UM DIA, MAIS DO QUE QUAL SER HUMANO NESSE MUNDO, TEM DE CÉLULAS OU DNA</span> (não sei muita coisa sobre, você que é da biologia que vai entender, mas saiba que é no sentido de ser muito), E TE AMO MAIS DO QUE O NÚMERO DE LITROS DE ÁGUA QUE TEM NO MUNDO. Eu quero a cada dia, saber como te amar, para sempre poder te tornar a garota mais feliz do mundo.</p>
+        <p class="letter-signoff">EU TE AMO MEU AMOR, E MAIS UMA VEZ TE DESEJO UM FELIZ ANIVERSÁRIO, E QUE APROVEITE MUITO SEU DIA.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA CINEMATOGRÁFICA (1 A 18) -->
+<section id="galeria">
+  <div class="eyebrow" style="justify-content: center; margin-bottom: 1rem;">Nossa História em Fotos</div>
+  <h2 class="section-title" style="text-align: center;">Galeria Cinematográfica</h2>
+  
+  <div class="cinema-wrapper">
+    <div class="cinema-bg" id="cinema-bg"></div>
+    <div class="cinema-stage" id="cinema-stage">
+      <!-- Injetado pelo JS -->
+    </div>
+    <div class="cinema-controls">
+      <button class="cinema-btn" onclick="prevCinemaPhoto()" aria-label="Anterior">❮</button>
+      <div class="cinema-counter" id="cinema-counter">1 / 18</div>
+      <button class="cinema-btn" onclick="nextCinemaPhoto()" aria-label="Próximo">❯</button>
+    </div>
+  </div>
+</section>
+
+<!-- MÚSICA -->
+<section id="musica">
+  <div class="glass-box">
+    <div class="eyebrow">Nossa música</div>
+    <h2 class="section-title">Eu preciso dizer</h2>
+    <div class="music-card" id="music-card">
+      <button class="vinyl" id="play-btn" aria-label="Tocar música"></button>
+      <div class="player-controls">
+        <div class="music-meta">
+          <p class="song">Preciso Dizer Que Te Amo</p>
+          <p class="artist">Tocando para você 🎶</p>
+        </div>
+        <div class="player-bar">
+          <span class="player-time" id="player-current">0:00</span>
+          <input type="range" id="player-seek" class="player-seek" min="0" max="100" value="0">
+          <span class="player-time" id="player-duration">0:00</span>
+        </div>
+      </div>
+    </div>
+    <audio id="audio-player" src="nossa-musica.mp3" preload="auto"></audio>
+  </div>
+</section>
+
+<!-- VALES DESIGN DE CUPOM VIP MINIMALISTA -->
+<section id="vales">
+  <div class="eyebrow">Mimos &amp; Presentes Especiais</div>
+  <h2 class="section-title">Seus Vales Exclusivos</h2>
+  <div class="cards-grid">
+    
+    <div class="card-item" onclick="claimVale('Dia do Sim', 'Hoje eu digo SIM para absolutamente tudo que você pedir!')">
+      <div>
+        <div class="card-header-tag">
+          <span>CUPOM #01</span>
+          <span class="card-badge">ESPECIAL</span>
+        </div>
+        <h3 class="card-title">Dia do Sim</h3>
+        <p class="card-desc">Tudo o que você me pedir hoje, eu direi sim e farei sem reclamar.</p>
+      </div>
+      <div class="card-footer">
+        <span>TOCAR PARA USAR</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="card-item" onclick="claimVale('Vale Jantar', 'Eu cozinho seu prato favorito ou te levo no seu lugar preferido!')">
+      <div>
+        <div class="card-header-tag">
+          <span>CUPOM #02</span>
+          <span class="card-badge">GASTRONOMIA</span>
+        </div>
+        <h3 class="card-title">Vale Jantar</h3>
+        <p class="card-desc">Cozinho o seu prato favorito ou te levo no restaurante que escolher.</p>
+      </div>
+      <div class="card-footer">
+        <span>TOCAR PARA USAR</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="card-item" onclick="claimVale('Vale Massagem', '30 minutos de massagem relaxante com zero reclamações!')">
+      <div>
+        <div class="card-header-tag">
+          <span>CUPOM #03</span>
+          <span class="card-badge">RELAX</span>
+        </div>
+        <h3 class="card-title">Vale Massagem</h3>
+        <p class="card-desc">30 minutos ininterruptos de massagem bem gostosa e relaxante.</p>
+      </div>
+      <div class="card-footer">
+        <span>TOCAR PARA USAR</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="card-item" onclick="claimVale('Vale Cuscuz', 'Cuscuz quentinho e perfeito feito por mim na hora que quiser!')">
+      <div>
+        <div class="card-header-tag">
+          <span>CUPOM #04</span>
+          <span class="card-badge">DELÍCIA</span>
+        </div>
+        <h3 class="card-title">Vale Cuscuz</h3>
+        <p class="card-desc">Cuscuz quentinho e caprichado preparado por mim na hora que pedir.</p>
+      </div>
+      <div class="card-footer">
+        <span>TOCAR PARA USAR</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="card-item" onclick="claimVale('Maratona Stitch', 'Maratona completa de Stitch com muita pipoca e carinho.')">
+      <div>
+        <div class="card-header-tag">
+          <span>CUPOM #05</span>
+          <span class="card-badge">CINEMA</span>
+        </div>
+        <h3 class="card-title">Maratona Stitch</h3>
+        <p class="card-desc">Sessão especial de filmes, muita pipoca e abraços do seu amor.</p>
+      </div>
+      <div class="card-footer">
+        <span>TOCAR PARA USAR</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="card-item" onclick="claimVale('Você Tem Razão', 'Pode usar no meio de qualquer discussão para ter a razão instantaneamente!')">
+      <div>
+        <div class="card-header-tag">
+          <span>CUPOM #06</span>
+          <span class="card-badge">PODER RARO</span>
+        </div>
+        <h3 class="card-title">Você Tem Razão</h3>
+        <p class="card-desc">Apresente este cupom no meio de qualquer conversa para ganhar a razão na hora.</p>
+      </div>
+      <div class="card-footer">
+        <span>TOCAR PARA USAR</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BUCKET LIST -->
+<section id="sonhos">
+  <div class="glass-box">
+    <div class="eyebrow">Nosso Futuro</div>
+    <h2 class="section-title">Nossa Lista de Sonhos</h2>
+    
+    <label class="bucket-item">
+      <input type="checkbox" value="Adotar o nosso cachorro salsicha 🐶" checked>
+      Adotar o nosso cachorro salsicha 🐶
+    </label>
+    <label class="bucket-item">
+      <input type="checkbox" value="Viajar juntos para a praia 🏖️" checked>
+      Viajar juntos para a praia 🏖️
+    </label>
+    <label class="bucket-item">
+      <input type="checkbox" value="Construir nossa linda casa própria 🏡" checked>
+      Construir nossa linda casa própria 🏡
+    </label>
+    <label class="bucket-item">
+      <input type="checkbox" value="Casar e ter nossa família 💍" checked>
+      Casar e ter nossa família 💍
+    </label>
+    <label class="bucket-item">
+      <input type="checkbox" value="Comprar ingressos para um show foda 🎤">
+      Ir juntos no show da nossa banda/artista favorito 🎤
+    </label>
+    
+    <div class="bucket-extra">
+      <label for="extra-dreams">Faltou algum sonho nosso aqui?</label>
+      <textarea id="extra-dreams" placeholder="Escreva aqui tudo o que você mais quer viver comigo..."></textarea>
+    </div>
+
+    <button class="btn-send" onclick="sendBucketList()">Enviar Sonhos para o Pedro ❤️</button>
+  </div>
+</section>
+
+<footer>
+  <div class="display">feliz aniversário, Laura.</div>
+  <div class="sign">02.09 — com todo o meu amor, Pedro</div>
+</footer>
+
+<!-- MODAL LIMPIMHO -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-card">
+    <h3 id="modal-title">Título</h3>
+    <p id="modal-desc">Descrição</p>
+    <div id="modal-actions"></div>
+  </div>
+</div>
+
+<script>
+  const NUMERO_PEDRO = "5561996803803"; 
+
+  // AUTOPLAY MÚSICA
+  const audio = document.getElementById('audio-player');
+  const playBtn = document.getElementById('play-btn');
+  const musicCard = document.getElementById('music-card');
+  const playerCurrent = document.getElementById('player-current');
+  const playerDuration = document.getElementById('player-duration');
+  const playerSeek = document.getElementById('player-seek');
+
+  let hasStartedAudio = false;
+
+  function tryAutoPlay() {
+    if (!hasStartedAudio && audio.paused) {
+      audio.play().then(() => {
+        hasStartedAudio = true;
+        musicCard.classList.add('playing');
+      }).catch(err => {});
+    }
+  }
+
+  window.addEventListener('click', tryAutoPlay, { once: true });
+  window.addEventListener('touchstart', tryAutoPlay, { once: true });
+
+  function formatTime(timeInSeconds) {
+    if (isNaN(timeInSeconds)) return "0:00";
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = Math.floor(timeInSeconds % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  }
+
+  playBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    hasStartedAudio = true;
+    if (audio.paused) { audio.play(); musicCard.classList.add('playing'); } 
+    else { audio.pause(); musicCard.classList.remove('playing'); }
+  });
+
+  audio.addEventListener('loadedmetadata', () => { playerDuration.innerText = formatTime(audio.duration); });
+  audio.addEventListener('timeupdate', () => {
+    playerCurrent.innerText = formatTime(audio.currentTime);
+    if (audio.duration) { playerSeek.value = (audio.currentTime / audio.duration) * 100; }
+  });
+  playerSeek.addEventListener('input', () => { audio.currentTime = (playerSeek.value / 100) * audio.duration; });
+  audio.addEventListener('ended', () => { musicCard.classList.remove('playing'); playerSeek.value = 0; playerCurrent.innerText = "0:00"; });
+
+  // GALERIA CINEMATOGRÁFICA 3D (1.jpg - 18.jpg)
+  const cinemaStage = document.getElementById('cinema-stage');
+  const cinemaBg = document.getElementById('cinema-bg');
+  const cinemaCounter = document.getElementById('cinema-counter');
+  const totalPhotos = 18;
+  let currentCinemaIndex = 0;
+
+  for (let i = 1; i <= totalPhotos; i++) {
+    const card = document.createElement('div');
+    card.className = 'cinema-card';
+    card.dataset.index = i - 1;
+    card.innerHTML = `<img src="${i}.jpg" alt="Foto ${i}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23F4B8D4\'/></svg>'">`;
+    card.addEventListener('click', () => {
+      currentCinemaIndex = i - 1;
+      updateCinemaGallery();
+    });
+    cinemaStage.appendChild(card);
+  }
+
+  function updateCinemaGallery() {
+    const cards = document.querySelectorAll('.cinema-card');
+    cards.forEach((card, idx) => {
+      card.className = 'cinema-card';
+      
+      let diff = idx - currentCinemaIndex;
+      if (diff === 0) {
+        card.classList.add('active');
+      } else if (diff === -1 || (diff === totalPhotos - 1)) {
+        card.classList.add('prev');
+      } else if (diff === 1 || (diff === -(totalPhotos - 1))) {
+        card.classList.add('next');
+      } else if (diff === -2) {
+        card.classList.add('far-prev');
+      } else if (diff === 2) {
+        card.classList.add('far-next');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    const activePhotoNum = currentCinemaIndex + 1;
+    cinemaBg.style.backgroundImage = `url('${activePhotoNum}.jpg')`;
+    cinemaCounter.innerText = `${activePhotoNum} / ${totalPhotos}`;
+  }
+
+  function nextCinemaPhoto() {
+    currentCinemaIndex = (currentCinemaIndex + 1) % totalPhotos;
+    updateCinemaGallery();
+  }
+
+  function prevCinemaPhoto() {
+    currentCinemaIndex = (currentCinemaIndex - 1 + totalPhotos) % totalPhotos;
+    updateCinemaGallery();
+  }
+
+  let touchStartX = 0;
+  cinemaStage.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive: true});
+  cinemaStage.addEventListener('touchend', e => {
+    let touchEndX = e.changedTouches[0].clientX;
+    if (touchStartX - touchEndX > 40) nextCinemaPhoto();
+    if (touchEndX - touchStartX > 40) prevCinemaPhoto();
+  }, {passive: true});
+
+  updateCinemaGallery();
+
+  // CONTAGEM REGRESSIVA
+  function updateCountdown() {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth(); 
+    const currentDate = now.getDate();
+
+    const countdownEl = document.getElementById('countdown');
+    const bdayMessageEl = document.getElementById('birthday-message');
+    const subtextEl = document.getElementById('hero-subtext');
+    const monthUnitEl = document.getElementById('cd-month-unit');
+    const bloomWrap = document.getElementById('bloom-wrap');
+
+    if (currentMonth === 8 && currentDate === 2) {
+      countdownEl.style.display = 'none';
+      subtextEl.style.display = 'none';
+      bdayMessageEl.style.display = 'block';
+      bloomWrap.classList.add('full-bloom');
+      return; 
+    }
+
+    countdownEl.style.display = 'flex';
+    bdayMessageEl.style.display = 'none';
+    subtextEl.style.display = 'block';
+
+    let targetDate = new Date(currentYear, 8, 2); 
+    if (now > targetDate) { targetDate = new Date(currentYear + 1, 8, 2); }
+
+    let months = (targetDate.getFullYear() - now.getFullYear()) * 12 + (targetDate.getMonth() - now.getMonth());
+    let tempDate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+
+    if (tempDate > targetDate) {
+      months--;
+      tempDate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+    }
+
+    const diff = targetDate - tempDate;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    if (months > 0) {
+      monthUnitEl.style.display = 'flex';
+      document.getElementById('cd-months').innerText = String(months).padStart(2, '0');
+    } else {
+      monthUnitEl.style.display = 'none';
+    }
+
+    document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+    document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+    document.getElementById('cd-mins').innerText = String(mins).padStart(2, '0');
+    document.getElementById('cd-secs').innerText = String(secs).padStart(2, '0');
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // CARTA
+  document.getElementById('envelope').addEventListener('click', function() {
+    tryAutoPlay();
+    this.classList.toggle('open-anim');
+    setTimeout(() => {
+      document.getElementById('letter-paper').classList.toggle('open');
+    }, 400);
+  });
+
+  // VALES & MODAL
+  const claimedVales = new Set();
+
+  function openModal(title, desc, actionHtml) {
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-desc').innerHTML = desc;
+    document.getElementById('modal-actions').innerHTML = actionHtml;
+    document.getElementById('modal-overlay').classList.add('active');
+  }
+  
+  function closeModal() { document.getElementById('modal-overlay').classList.remove('active'); }
+
+  function fireConfetti() {
+    for (let i = 0; i < 35; i++) {
+      const conf = document.createElement('div');
+      conf.style.position = 'fixed';
+      conf.style.left = Math.random() * 100 + 'vw';
+      conf.style.top = '-10px';
+      conf.style.width = '10px';
+      conf.style.height = '10px';
+      conf.style.backgroundColor = ['#E83F8C', '#4A90E2', '#FACC15', '#F4B8D4'][Math.floor(Math.random() * 4)];
+      conf.style.zIndex = '9999';
+      conf.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+      conf.style.transition = 'top 2s ease-in, transform 2s linear';
+      document.body.appendChild(conf);
+      setTimeout(() => {
+        conf.style.top = '110vh';
+        conf.style.transform = `rotate(${Math.random() * 720}deg) translateX(${Math.random() * 50 - 25}px)`;
+      }, 10);
+      setTimeout(() => conf.remove(), 2100);
+    }
+  }
+
+  function claimVale(title, details) {
+    if (claimedVales.has(title)) {
+      const msgPermissao = encodeURIComponent(`Amor, eu quero usar o vale "${title}" de novo! Libera pra mim vai? 🥺❤️`);
+      const linkZap = `https://wa.me/${NUMERO_PEDRO}?text=${msgPermissao}`;
+      openModal(
+        "Vale já utilizado! 😜",
+        `Você já resgatou o <b>${title}</b>! Peça permissão pro Pedro para usar novamente.`,
+        `<a href="${linkZap}" target="_blank" class="modal-btn">Pedir Permissão no WhatsApp 📲</a>
+         <button onclick="closeModal()" class="modal-btn secondary">Voltar</button>`
+      );
+    } else {
+      claimedVales.add(title);
+      fireConfetti();
+      
+      const msgResgate = encodeURIComponent(`Oii amor! Acabei de resgatar o meu vale "${title}" no site! 🎉\n\n Regra do vale: "${details}"\n\nQuero usar hoje! ❤️`);
+      const linkZap = `https://wa.me/${NUMERO_PEDRO}?text=${msgResgate}`;
+
+      openModal(
+        `🎟️ ${title}`,
+        `Parabéns princesa! Você resgatou:<br><i>"${details}"</i>`,
+        `<a href="${linkZap}" target="_blank" class="modal-btn">Resgatar no WhatsApp 📲</a>
+         <button onclick="closeModal()" class="modal-btn secondary">Guardar para depois</button>`
+      );
+    }
+  }
+
+  // BUCKET LIST
+  function sendBucketList() {
+    const checkboxes = document.querySelectorAll('.bucket-item input[type="checkbox"]:checked');
+    let selectedDreams = [];
+    checkboxes.forEach(cb => selectedDreams.push("• " + cb.value));
+
+    const extraText = document.getElementById('extra-dreams').value.trim();
+    let finalMessage = "✨ *Nossa Lista de Sonhos - Respostas da Laura* ✨\n\n";
+    if (selectedDreams.length > 0) { finalMessage += "*Marcou os sonhos:*\n" + selectedDreams.join("\n") + "\n\n"; }
+    if (extraText !== "") { finalMessage += "*E ainda adicionou:*\n" + extraText + "\n\n"; }
+    finalMessage += "Te amo amor! Mal posso esperar para vivermos tudo isso! ❤️";
+
+    window.open(`https://wa.me/${NUMERO_PEDRO}?text=${encodeURIComponent(finalMessage)}`, '_blank');
+  }
+
+  // EASTER EGGS
+  let stitchClicks = 0; let salsichaClicks = 0;
+  document.getElementById('easter-stitch').addEventListener('click', () => {
+    stitchClicks++;
+    if (stitchClicks === 2) {
+      stitchClicks = 0; fireConfetti();
+      openModal("💙 Segredo do Stitch!", "<i>'Ohana quer dizer família. E família quer dizer nunca abandonar.'</i><br><br>Você é minha família, Laura! Te amo!", `<button onclick="closeModal()" class="modal-btn">Eu também te amo! ❤️</button>`);
+    }
+  });
+  document.getElementById('easter-salsicha').addEventListener('click', () => {
+    salsichaClicks++;
+    if (salsichaClicks === 2) {
+      salsichaClicks = 0; fireConfetti();
+      openModal("🐶 Au au! Segredo!", "Você achou o cachorro salsicha escondido! Ele tá só esperando a gente adotar ele pra bagunçar nossa casa inteira! 🏡🐾", `<button onclick="closeModal()" class="modal-btn">Vem logo doguinho! 🥺</button>`);
+    }
+  });
+</script>
+</body>
+</html>
