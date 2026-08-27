@@ -61,7 +61,7 @@
   a:hover { color: var(--blue-vivid); }
   ::selection { background: var(--pink-vivid); color: #fff; }
 
-  /* EFEITOS DE FLUTUAÇÃO */
+  /* EFEITOS DE FLUTUAÇÃO DE ICONES */
   .floating-icons {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -77,7 +77,6 @@
     display: flex; align-items: center; justify-content: center;
     filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
   }
-  .floating-icons img { width: 45px; height: auto; opacity: 0.85; }
   
   .floating-icons span:nth-child(1) { left: 5%; animation-duration: 22s; animation-delay: 1s; font-size: 2rem;}
   .floating-icons span:nth-child(2) { left: 25%; animation-duration: 18s; animation-delay: 5s; }
@@ -95,7 +94,7 @@
     100% { transform: translateY(-10vh) translateX(-30px) rotate(360deg); opacity: 0; }
   }
 
-  section { position: relative; z-index: 1; padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; }
+  section { position: relative; z-index: 1; padding: 5rem 1.5rem; max-width: 850px; margin: 0 auto; }
 
   .glass-box {
     background: var(--glass);
@@ -131,7 +130,7 @@
   .eyebrow::before { content: ""; width: 25px; height: 2px; background: var(--pink-vivid); border-radius: 2px;}
   .section-title { font-size: clamp(2rem, 5vw, 3rem); margin: 0 0 2.5rem 0; color: var(--blue-dark); position: relative; z-index: 1; }
 
-  /* CARTA COM ALINHAMENTO DA PAUTA */
+  /* CARTA */
   .letter-wrap { text-align: center; perspective: 1000px; position: relative; margin-top: 1.5rem; }
   .envelope { margin: 0 auto; width: min(340px, 85vw); aspect-ratio: 3/2; background: linear-gradient(135deg, var(--pink-light), #F0A0C6); border-radius: 12px; position: relative; cursor: pointer; box-shadow: 0 20px 50px -10px rgba(227,103,158,0.4); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 2px solid rgba(255,255,255,0.7); z-index: 5;}
   .envelope:hover { transform: translateY(-8px) rotate(-1.5deg); box-shadow: 0 30px 60px -15px rgba(227,103,158,0.6); }
@@ -174,10 +173,6 @@
   .letter-signoff { font-style: italic; font-size: 1.2rem; color: var(--blue-vivid); font-weight: 700; text-transform: uppercase; text-align: right; margin-bottom: 0 !important; }
 
   .washi-tape { position: absolute; top: -14px; left: 50%; transform: translateX(-50%) rotate(-2deg); width: 140px; height: 32px; background: linear-gradient(90deg, rgba(232,63,140,0.75), rgba(74,144,226,0.75)); box-shadow: 0 3px 6px rgba(0,0,0,0.1); z-index: 4; border-radius: 2px; backdrop-filter: blur(2px);}
-  .sticker { position: absolute; z-index: 4; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));}
-  .sticker:hover { transform: scale(1.15) rotate(0deg) !important; filter: drop-shadow(4px 8px 12px rgba(0,0,0,0.22)); }
-  .sticker-salsicha { top: -35px; right: 15px; width: 85px; transform: rotate(14deg); }
-  .sticker-stitch { bottom: -25px; left: 15px; width: 90px; transform: rotate(-14deg); }
 
   /* GALERIA CINEMATOGRÁFICA 3D */
   #galeria {
@@ -327,43 +322,63 @@
   .player-time { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--blue-vivid); min-width: 3em; text-align: center; font-weight: 600; }
   .player-seek { flex: 1; accent-color: var(--pink-vivid); cursor: pointer; height: 6px; border-radius: 3px; background: rgba(0,0,0,0.1); outline: none;}
 
-  /* DESIGN NOVO DOS VALES: BILHETES / CUPONS VIP MINIMALISTAS */
+  /* DESIGN DOS CARDS (VALES) */
   .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
   }
 
   .card-item {
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(12px);
+    background: #ffffff;
     border-radius: 20px;
-    padding: 1.8rem 1.4rem;
+    padding: 1.8rem 1.4rem 1.2rem 1.4rem;
     text-align: left;
     cursor: pointer;
     transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
-    box-shadow: 0 12px 30px rgba(227, 103, 158, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1.5px solid rgba(74, 144, 226, 0.15);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
   }
 
-  /* Borda lateral degradê estilo ticket premium */
   .card-item::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; width: 6px; height: 100%;
-    background: linear-gradient(180deg, var(--pink-vivid), var(--blue-vivid));
+    top: 0; left: 0; width: 100%; height: 5px;
+    background: linear-gradient(90deg, var(--pink-vivid), var(--blue-vivid));
+  }
+
+  .card-item::after {
+    content: "";
+    position: absolute;
+    bottom: 45px;
+    left: -8px;
+    width: 16px;
+    height: 16px;
+    background: #F8FAFC;
+    border-radius: 50%;
+    box-shadow: inset -2px 0 3px rgba(0,0,0,0.05);
+  }
+
+  .card-item .notch-right {
+    position: absolute;
+    bottom: 45px;
+    right: -8px;
+    width: 16px;
+    height: 16px;
+    background: #F8FAFC;
+    border-radius: 50%;
+    box-shadow: inset 2px 0 3px rgba(0,0,0,0.05);
   }
 
   .card-item:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 45px rgba(232, 63, 140, 0.22);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(232, 63, 140, 0.2);
     border-color: var(--pink-vivid);
-    background: #ffffff;
   }
 
   .card-header-tag {
@@ -380,32 +395,33 @@
   }
 
   .card-badge {
-    background: rgba(232, 63, 140, 0.12);
+    background: rgba(232, 63, 140, 0.1);
     color: var(--pink-vivid);
-    padding: 3px 8px;
-    border-radius: 8px;
+    padding: 4px 10px;
+    border-radius: 12px;
     font-size: 0.65rem;
+    font-weight: 600;
   }
 
   .card-title {
     font-family: 'Fraunces', serif;
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     color: var(--blue-dark);
-    margin: 0 0 0.4rem 0;
+    margin: 0 0 0.5rem 0;
     font-weight: 700;
   }
 
   .card-desc {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     color: #475569;
-    margin: 0 0 1.2rem 0;
-    line-height: 1.45;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.5;
     font-weight: 400;
   }
 
   .card-footer {
-    border-top: 1px dashed rgba(74, 144, 226, 0.25);
-    padding-top: 0.8rem;
+    border-top: 1.5px dashed rgba(74, 144, 226, 0.2);
+    padding-top: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -417,13 +433,56 @@
   }
 
   .card-footer span.arrow {
-    font-size: 0.9rem;
+    font-size: 1rem;
     transition: transform 0.3s;
   }
 
   .card-item:hover .card-footer span.arrow {
-    transform: translateX(4px);
+    transform: translateX(5px);
     color: var(--blue-vivid);
+  }
+
+  /* ESTILOS DAS CARTINHAS (NOVO) */
+  .cartinhas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .cartinha-box {
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px dashed var(--pink-light);
+    border-radius: 18px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .cartinha-box:hover {
+    background: #fff;
+    transform: translateY(-6px) scale(1.02);
+    border-color: var(--pink-vivid);
+    box-shadow: 0 15px 30px rgba(232, 63, 140, 0.15);
+  }
+
+  .cartinha-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+  }
+
+  .cartinha-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--blue-dark);
+    font-size: 1.1rem;
+    line-height: 1.4;
   }
 
   /* BUCKET LIST */
@@ -450,13 +509,13 @@
   .modal-overlay.active { display: flex; animation: fadeIn 0.4s ease; }
   @keyframes fadeIn { from { opacity: 0; backdrop-filter: blur(0); } to { opacity: 1; backdrop-filter: blur(8px); } }
 
-  .modal-card { background: #fff; border-radius: 28px; padding: 2.2rem 1.8rem; max-width: 420px; width: 100%; text-align: center; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3); border: 4px solid var(--pink-light); transform: scale(0.8); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden;}
+  .modal-card { background: #fff; border-radius: 28px; padding: 2.2rem 1.8rem; max-width: 420px; width: 100%; text-align: center; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3); border: 4px solid var(--pink-light); transform: scale(0.8); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; max-height: 90vh; overflow-y: auto;}
   .modal-overlay.active .modal-card { transform: scale(1); }
   
   .modal-card h3 { font-size: 1.6rem; color: var(--pink-vivid); margin: 0 0 0.8rem 0; }
   .modal-card p { font-size: 1rem; color: #475569; line-height: 1.5; margin-bottom: 1.5rem; }
 
-  .modal-btn { display: inline-block; padding: 1rem 1.5rem; background: var(--blue-vivid); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 1rem; border: none; cursor: pointer; transition: all 0.3s; margin: 0.3rem 0; width: 100%; box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);}
+  .modal-btn { display: inline-block; padding: 1rem 1.5rem; background: var(--blue-vivid); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 1rem; border: none; cursor: pointer; transition: all 0.3s; margin: 0.3rem 0; width: 100%; box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3); font-family: 'Work Sans', sans-serif;}
   .modal-btn:hover { background: var(--blue-dark); transform: translateY(-2px); }
   .modal-btn.secondary { background: #E2E8F0; color: #475569; box-shadow: none;}
   .modal-btn.secondary:hover { background: #CBD5E1; }
@@ -471,9 +530,7 @@
 <div class="floating-icons" aria-hidden="true">
   <span>❤️</span>
   <span>✨</span>
-  <span><img src="salsicha.png" alt="Salsicha" onerror="this.style.display='none'"></span>
   <span>💖</span>
-  <span><img src="stitch.png" alt="Stitch" onerror="this.style.display='none'"></span>
   <span>💍</span>
   <span>🌸</span>
 </div>
@@ -524,15 +581,13 @@
       
       <div class="letter-paper" id="letter-paper">
         <div class="washi-tape"></div>
-        <img src="salsicha.png" alt="Salsicha" class="sticker sticker-salsicha" id="easter-salsicha" title="Au au!">
-        <img src="stitch.png" alt="Stitch" class="sticker sticker-stitch" id="easter-stitch" title="Aloha!">
         
         <p>Meu amorrr, feliz aniversárioooo, estou muito feliz de poder fazer essa carta pra você, pois essa é a primeira carta entre muitas que eu irei fazer, e sinceramente, não poderia começar ela de outro jeito.</p>
         <p>Meu bemmmm, eu te desejo muitos anos de vida, e que Deus abençoe muito você, e nós. Você é o amor da minha vida e eu não sei como vivi toda a minha vida antes, sem você, pois você é o melhor que já me aconteceu. Então, quero que você seja muito feliz, e irei fazer o meu máximo pra isso acontecer. Então continue sendo essa garota incrível que você é.</p>
         <p>Além de tudo, eu quero mais uma vez te agradecer, por acima de todos os meus defeitos, me amar, por que mesmo com todos as minhas paranoias e inseguranças, você decidiu abraçar todas, porque mesmo eu sendo estranha, você decidiu ser estranha comigo, por que mesmo com tudo, mesmo me conhecendo cada vez mais, e mesmo com cada coisa que eu já fiz de errado, você mesmo assim, abre esse seu sorrisinho lindo pra falar que me ama da mesma forma como da primeira vez.</p>
         <p>Você com certeza, é a melhor escolha que eu já fiz na minha vida, eu te admiro desde a primeira vez que te vi, te admiro desde o primeiro riso, te admiro desde o primeiro conversa, te admiro desde o primeiro olhar, te admiro desde o primeiro beijo, te admiro desde o primeiro abraço, e acima de tudo, te admiro por ser simplesmente você.</p>
         <p>Quero que você saiba que sempre estarei aqui por você, mesmo nas maiores dificuldades, e mesmo nas maiores tristezas, mas claramente também nas maiores alegrias e bençãos. Quero me casar, ter filhos, uma linda casa e viver o resto da minha vida compartilhada com você, pois sei que assim, será a melhor forma de vive-la.</p>
-        <p>Não sei muito mais o que dizer, mas acredito que tenha dado pra entender que <span class="shout">EU TE AMO MUITO MINHA PRINCESA, MAIS DO QUE EU ACHEI QUE SERIA CAPAZ DE AMAR ALGUÉM UM DIA, MAIS DO QUE QUAL SER HUMANO NESSE MUNDO, TEM DE CÉLULAS OU DNA</span> (não sei muita coisa sobre, você que é da biologia que vai entender, mas saiba que é no sentido de ser muito), E TE AMO MAIS DO QUE O NÚMERO DE LITROS DE ÁGUA QUE TEM NO MUNDO. Eu quero a cada dia, saber como te amar, para sempre poder te tornar a garota mais feliz do mundo.</p>
+        <p>Não sei muito mais o que dizer, mas acredito que tenha dado pra entender que <span class="shout">EU TE AMO MUITO MINHA PRINCESA, MAIS DO QUE EU ACHEI QUE SERIA CAPAZ DE AMAR ALGUÉM UN DIA, MAIS DO QUE QUAL SER HUMANO NESSE MUNDO, TEM DE CÉLULAS OU DNA</span> (não sei muita coisa sobre, você que é da biologia que vai entender, mas saiba que é no sentido de ser muito), E TE AMO MAIS DO QUE O NÚMERO DE LITROS DE ÁGUA QUE TEM NO MUNDO. Eu quero a cada dia, saber como te amar, para sempre poder te tornar a garota mais feliz do mundo.</p>
         <p class="letter-signoff">EU TE AMO MEU AMOR, E MAIS UMA VEZ TE DESEJO UM FELIZ ANIVERSÁRIO, E QUE APROVEITE MUITO SEU DIA.</p>
       </div>
     </div>
@@ -580,13 +635,14 @@
   </div>
 </section>
 
-<!-- VALES DESIGN DE CUPOM VIP MINIMALISTA -->
+<!-- SEÇÃO DE VALES MINIMALISTAS -->
 <section id="vales">
   <div class="eyebrow">Mimos &amp; Presentes Especiais</div>
   <h2 class="section-title">Seus Vales Exclusivos</h2>
   <div class="cards-grid">
     
     <div class="card-item" onclick="claimVale('Dia do Sim', 'Hoje eu digo SIM para absolutamente tudo que você pedir!')">
+      <div class="notch-right"></div>
       <div>
         <div class="card-header-tag">
           <span>CUPOM #01</span>
@@ -596,12 +652,13 @@
         <p class="card-desc">Tudo o que você me pedir hoje, eu direi sim e farei sem reclamar.</p>
       </div>
       <div class="card-footer">
-        <span>TOCAR PARA USAR</span>
+        <span>RESGATAR NO ZAP</span>
         <span class="arrow">→</span>
       </div>
     </div>
 
     <div class="card-item" onclick="claimVale('Vale Jantar', 'Eu cozinho seu prato favorito ou te levo no seu lugar preferido!')">
+      <div class="notch-right"></div>
       <div>
         <div class="card-header-tag">
           <span>CUPOM #02</span>
@@ -611,12 +668,13 @@
         <p class="card-desc">Cozinho o seu prato favorito ou te levo no restaurante que escolher.</p>
       </div>
       <div class="card-footer">
-        <span>TOCAR PARA USAR</span>
+        <span>RESGATAR NO ZAP</span>
         <span class="arrow">→</span>
       </div>
     </div>
 
     <div class="card-item" onclick="claimVale('Vale Massagem', '30 minutos de massagem relaxante com zero reclamações!')">
+      <div class="notch-right"></div>
       <div>
         <div class="card-header-tag">
           <span>CUPOM #03</span>
@@ -626,12 +684,13 @@
         <p class="card-desc">30 minutos ininterruptos de massagem bem gostosa e relaxante.</p>
       </div>
       <div class="card-footer">
-        <span>TOCAR PARA USAR</span>
+        <span>RESGATAR NO ZAP</span>
         <span class="arrow">→</span>
       </div>
     </div>
 
     <div class="card-item" onclick="claimVale('Vale Cuscuz', 'Cuscuz quentinho e perfeito feito por mim na hora que quiser!')">
+      <div class="notch-right"></div>
       <div>
         <div class="card-header-tag">
           <span>CUPOM #04</span>
@@ -641,27 +700,29 @@
         <p class="card-desc">Cuscuz quentinho e caprichado preparado por mim na hora que pedir.</p>
       </div>
       <div class="card-footer">
-        <span>TOCAR PARA USAR</span>
+        <span>RESGATAR NO ZAP</span>
         <span class="arrow">→</span>
       </div>
     </div>
 
-    <div class="card-item" onclick="claimVale('Maratona Stitch', 'Maratona completa de Stitch com muita pipoca e carinho.')">
+    <div class="card-item" onclick="claimVale('Maratona Stitch & Filmes', 'Sessão de cinema em casa com muita pipoca, doces e carinho.')">
+      <div class="notch-right"></div>
       <div>
         <div class="card-header-tag">
           <span>CUPOM #05</span>
           <span class="card-badge">CINEMA</span>
         </div>
-        <h3 class="card-title">Maratona Stitch</h3>
-        <p class="card-desc">Sessão especial de filmes, muita pipoca e abraços do seu amor.</p>
+        <h3 class="card-title">Maratona de Filmes</h3>
+        <p class="card-desc">Sessão especial de filmes, com você escolhendo tudo, pipoca e abraços.</p>
       </div>
       <div class="card-footer">
-        <span>TOCAR PARA USAR</span>
+        <span>RESGATAR NO ZAP</span>
         <span class="arrow">→</span>
       </div>
     </div>
 
     <div class="card-item" onclick="claimVale('Você Tem Razão', 'Pode usar no meio de qualquer discussão para ter a razão instantaneamente!')">
+      <div class="notch-right"></div>
       <div>
         <div class="card-header-tag">
           <span>CUPOM #06</span>
@@ -671,11 +732,102 @@
         <p class="card-desc">Apresente este cupom no meio de qualquer conversa para ganhar a razão na hora.</p>
       </div>
       <div class="card-footer">
-        <span>TOCAR PARA USAR</span>
+        <span>RESGATAR NO ZAP</span>
         <span class="arrow">→</span>
       </div>
     </div>
 
+    <div class="card-item" onclick="claimVale('Vale Açaí / Docinho', 'Qualquer doce ou açaí que você quiser, hoje é por minha conta!')">
+      <div class="notch-right"></div>
+      <div>
+        <div class="card-header-tag">
+          <span>CUPOM #07</span>
+          <span class="card-badge">SOBREMESA</span>
+        </div>
+        <h3 class="card-title">Vale Sobremesa</h3>
+        <p class="card-desc">Aquele açaí completo ou o seu doce preferido pago e entregue por mim.</p>
+      </div>
+      <div class="card-footer">
+        <span>RESGATAR NO ZAP</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="card-item" onclick="claimVale('Passeio Surpresa', 'Um dia inteirinho planejado por mim para um lugar super especial!')">
+      <div class="notch-right"></div>
+      <div>
+        <div class="card-header-tag">
+          <span>CUPOM #08</span>
+          <span class="card-badge">AVENTURA</span>
+        </div>
+        <h3 class="card-title">Passeio Surpresa</h3>
+        <p class="card-desc">Você só precisa se arrumar! Eu me encarrego de planejar um dia inesquecível.</p>
+      </div>
+      <div class="card-footer">
+        <span>RESGATAR NO ZAP</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="card-item" onclick="claimVale('Dengo Sem Limites', 'Sessão infinita de cafuné, abraços e carinho até você dormir.')">
+      <div class="notch-right"></div>
+      <div>
+        <div class="card-header-tag">
+          <span>CUPOM #09</span>
+          <span class="card-badge">INFINITO</span>
+        </div>
+        <h3 class="card-title">Dengo Sem Limites</h3>
+        <p class="card-desc">Sessão ilimitada de cafuné, abraços apertados e chamego sem tempo para acabar.</p>
+      </div>
+      <div class="card-footer">
+        <span>RESGATAR NO ZAP</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SEÇÃO DE CARTINHAS DE EMERGÊNCIA -->
+<section id="cartinhas">
+  <div class="glass-box">
+    <div class="eyebrow">Para todos os momentos</div>
+    <h2 class="section-title">Cartinhas de Emergência</h2>
+    
+    <div class="cartinhas-grid">
+      
+      <!-- AQUI VOCÊ PODE APAGAR MEU TEXTO E COLOCAR O SEU (mantendo as crases ` no começo e no final do texto) -->
+      <div class="cartinha-box" onclick="abrirCartinha('Abra quando estiver triste', `Meu amor, sinto muito que você esteja triste.<br><br>Queria poder te abraçar bem forte agora e tirar tudo o que está te machucando.<br><br>Lembre-se que você não está sozinha e que eu estou sempre aqui por você. Vai passar. Eu te amo muito!`, false, '🌧️')">
+        <div class="cartinha-icon">🌧️</div>
+        <div class="cartinha-title">Abra quando<br>estiver triste</div>
+      </div>
+      
+      <div class="cartinha-box" onclick="abrirCartinha('Abra quando estiver com sdds', `Eu também estou morrendo de saudade de você!<br><br>Cada segundo longe parece uma eternidade. Lê isso e vem correndo me mandar uma mensagem.`, true, '🥺')">
+        <div class="cartinha-icon">🥺</div>
+        <div class="cartinha-title">Abra quando<br>estiver com sdds</div>
+      </div>
+
+      <div class="cartinha-box" onclick="abrirCartinha('Abra quando se sentir insegura', `Ei, para com isso!<br><br>Você é a mulher mais incrível, linda e inteligente que eu já conheci.<br><br>O mundo tem muita sorte de te ter, e eu tenho mais sorte ainda. Acredite no seu brilho, porque eu vejo ele todos os dias.`, false, '✨')">
+        <div class="cartinha-icon">✨</div>
+        <div class="cartinha-title">Abra quando<br>se sentir insegura</div>
+      </div>
+
+      <div class="cartinha-box" onclick="abrirCartinha('Abra quando estiver feliz', `Que delícia te ver feliz!<br><br>Seu sorriso é literalmente o meu presente favorito. Guarda essa sensação boa, comemora, pula, dança!<br><br>Eu celebro cada alegria sua com todo o meu coração.`, false, '🎉')">
+        <div class="cartinha-icon">🎉</div>
+        <div class="cartinha-title">Abra quando<br>estiver feliz</div>
+      </div>
+
+      <div class="cartinha-box" onclick="abrirCartinha('Abra quando não conseguir dormir', `Feche os olhos, respira bem fundo e imagina que eu estou aí do seu lado, fazendo cafuné no seu cabelo até você pegar no sono.<br><br>Pensa nas coisas boas que vivemos hoje e nos nossos planos de amanhã.<br><br>Boa noite, meu amor.`, false, '🌙')">
+        <div class="cartinha-icon">🌙</div>
+        <div class="cartinha-title">Abra quando não<br>conseguir dormir</div>
+      </div>
+
+      <div class="cartinha-box" onclick="abrirCartinha('Quiser saber o quanto te amo', `Eu te amo mais do que as palavras cabem.<br><br>Te amo nos detalhes, no seu sorriso, nas suas manias. Você mudou o meu mundo pra muito melhor.<br><br>Você é o amor da minha vida, hoje e sempre.`, false, '❤️')">
+        <div class="cartinha-icon">❤️</div>
+        <div class="cartinha-title">Quiser saber o<br>quanto te amo</div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -720,7 +872,7 @@
   <div class="sign">02.09 — com todo o meu amor, Pedro</div>
 </footer>
 
-<!-- MODAL LIMPIMHO -->
+<!-- MODAL LIMPIMHO (REAPROVEITADO PARA VALES E CARTINHAS) -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal-card">
     <h3 id="modal-title">Título</h3>
@@ -730,7 +882,9 @@
 </div>
 
 <script>
-  const NUMERO_PEDRO = "5561996803803"; 
+  // TELEFONES
+  const NUMERO_PEDRO = "5561996803803"; // As mensagens da Laura virão para o seu número!
+  const NUMERO_LAURA = "5561995124309"; // O número dela deixei salvo aqui caso você queira usar pra algo depois :)
 
   // AUTOPLAY MÚSICA
   const audio = document.getElementById('audio-player');
@@ -898,7 +1052,7 @@
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // CARTA
+  // CARTA PRINCIPAL
   document.getElementById('envelope').addEventListener('click', function() {
     tryAutoPlay();
     this.classList.toggle('open-anim');
@@ -907,9 +1061,7 @@
     }, 400);
   });
 
-  // VALES & MODAL
-  const claimedVales = new Set();
-
+  // FUNÇÕES GERAIS DE MODAL (REAPROVEITADAS)
   function openModal(title, desc, actionHtml) {
     document.getElementById('modal-title').innerText = title;
     document.getElementById('modal-desc').innerHTML = desc;
@@ -918,6 +1070,9 @@
   }
   
   function closeModal() { document.getElementById('modal-overlay').classList.remove('active'); }
+
+  // VALES E CONFETES
+  const claimedVales = new Set();
 
   function fireConfetti() {
     for (let i = 0; i < 35; i++) {
@@ -947,14 +1102,14 @@
       openModal(
         "Vale já utilizado! 😜",
         `Você já resgatou o <b>${title}</b>! Peça permissão pro Pedro para usar novamente.`,
-        `<a href="${linkZap}" target="_blank" class="modal-btn">Pedir Permissão no WhatsApp 📲</a>
+        `<a href="${linkZap}" target="_blank" class="modal-btn">Pedir no WhatsApp 📲</a>
          <button onclick="closeModal()" class="modal-btn secondary">Voltar</button>`
       );
     } else {
       claimedVales.add(title);
       fireConfetti();
       
-      const msgResgate = encodeURIComponent(`Oii amor! Acabei de resgatar o meu vale "${title}" no site! 🎉\n\n Regra do vale: "${details}"\n\nQuero usar hoje! ❤️`);
+      const msgResgate = encodeURIComponent(`Oii amor! Acabei de resgatar o meu vale "${title}" no site! 🎉\n\nRegra do vale: "${details}"\n\nQuero usar hoje! ❤️`);
       const linkZap = `https://wa.me/${NUMERO_PEDRO}?text=${msgResgate}`;
 
       openModal(
@@ -964,6 +1119,31 @@
          <button onclick="closeModal()" class="modal-btn secondary">Guardar para depois</button>`
       );
     }
+  }
+
+  // NOVO: ABRIR CARTINHAS DE EMERGÊNCIA
+  function abrirCartinha(title, body, isSaudade, emoji) {
+    let actionBtn = `<button onclick="closeModal()" class="modal-btn">Guardar no coração ❤️</button>`;
+
+    // Se for a cartinha de saudade, adiciona botão de mandar mensagem no zap!
+    if (isSaudade) {
+      const msg = encodeURIComponent("Amor, abri a cartinha da saudade... tô com muita saudade de você! 🥰");
+      const linkZap = `https://wa.me/${NUMERO_PEDRO}?text=${msg}`;
+      actionBtn = `<a href="${linkZap}" target="_blank" class="modal-btn">Mandar mensagem pro Pedro 📲</a>
+                   <button onclick="closeModal()" class="modal-btn secondary">Guardar</button>`;
+    }
+
+    // Formatando o texto da cartinha para ficar com cara de papel/escrita
+    const formattedBody = `
+      <p style="font-family: 'Fraunces', serif; font-size: 1.1rem; color: #475569; text-align: left; line-height: 1.6; margin-bottom: 1.5rem;">
+        ${body}
+      </p>
+      <p style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--pink-vivid); font-weight: 600;">
+        Com amor, Pedro ❤️
+      </p>
+    `;
+
+    openModal(`${emoji} ${title}`, formattedBody, actionBtn);
   }
 
   // BUCKET LIST
@@ -980,23 +1160,6 @@
 
     window.open(`https://wa.me/${NUMERO_PEDRO}?text=${encodeURIComponent(finalMessage)}`, '_blank');
   }
-
-  // EASTER EGGS
-  let stitchClicks = 0; let salsichaClicks = 0;
-  document.getElementById('easter-stitch').addEventListener('click', () => {
-    stitchClicks++;
-    if (stitchClicks === 2) {
-      stitchClicks = 0; fireConfetti();
-      openModal("💙 Segredo do Stitch!", "<i>'Ohana quer dizer família. E família quer dizer nunca abandonar.'</i><br><br>Você é minha família, Laura! Te amo!", `<button onclick="closeModal()" class="modal-btn">Eu também te amo! ❤️</button>`);
-    }
-  });
-  document.getElementById('easter-salsicha').addEventListener('click', () => {
-    salsichaClicks++;
-    if (salsichaClicks === 2) {
-      salsichaClicks = 0; fireConfetti();
-      openModal("🐶 Au au! Segredo!", "Você achou o cachorro salsicha escondido! Ele tá só esperando a gente adotar ele pra bagunçar nossa casa inteira! 🏡🐾", `<button onclick="closeModal()" class="modal-btn">Vem logo doguinho! 🥺</button>`);
-    }
-  });
 </script>
 </body>
 </html>
