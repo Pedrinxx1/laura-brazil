@@ -524,111 +524,112 @@
   footer .display { font-size: 2rem; font-style: italic; color: var(--pink-vivid); margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(255,255,255,0.8); }
   footer .sign { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-vivid); font-weight: 600; }
   
-  /* CSS do Timeline */
-
+  /* CSS DO TIMELINE (CORRIGIDO E PADRONIZADO AO TEMA) */
   #historia {
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 20px;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #333;
-}
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+  }
 
-#historia .eyebrow {
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 3px;
-  color: #d9534f;
-  font-weight: 600;
-  text-align: center;
-}
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
 
-#historia .section-title {
-  text-align: center;
-  font-size: 2rem;
-  margin: 8px 0 40px 0;
-  color: #2c3e50;
-  font-weight: 700;
-}
+  /* Linha vertical decorativa com degradê */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    background: linear-gradient(180deg, var(--pink-vivid), var(--blue-vivid));
+    border-radius: 2px;
+  }
 
-.timeline {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: relative;
-}
+  .timeline li {
+    position: relative;
+    padding-left: 45px;
+    margin-bottom: 35px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
 
-/* Linha vertical que conecta os pontos */
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 17px;
-  top: 10px;
-  bottom: 10px;
-  width: 2px;
-  background: #f1c40f; /* Cor da raiz / linha */
-}
+  /* Estado ativo quando entra na tela */
+  .timeline li.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-.timeline li {
-  position: relative;
-  padding-left: 50px;
-  margin-bottom: 35px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
+  /* Ponto na linha do tempo */
+  .timeline li::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid var(--pink-vivid);
+    box-shadow: 0 0 0 3px rgba(232, 63, 140, 0.2);
+    z-index: 2;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
 
-/* Estado ativo quando aparece na tela via JS */
-.timeline li.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+  .timeline li:hover::before {
+    background: var(--pink-vivid);
+    transform: scale(1.2);
+  }
 
-/* Ponto circular na linha do tempo */
-.timeline li::before {
-  content: '';
-  position: absolute;
-  left: 9px;
-  top: 4px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 3px solid #d9534f;
-  box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
-  z-index: 2;
-  transition: background-color 0.3s ease;
-}
+  .t-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--blue-vivid);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
 
-.timeline li:hover::before {
-  background: #d9534f;
-}
+  .timeline h3 {
+    font-family: 'Fraunces', serif;
+    margin: 0 0 12px 0;
+    font-size: 1.4rem;
+    color: var(--blue-dark);
+    font-weight: 600;
+  }
 
-.t-eyebrow {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #888;
-  font-weight: 600;
-  margin-bottom: 2px;
-}
+  .timeline p {
+    margin: 0;
+    line-height: 1.7;
+    color: #475569;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px 24px;
+    border-radius: 18px;
+    border-left: 4px solid var(--pink-vivid);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 10px 25px rgba(227, 103, 158, 0.08);
+    /* SOLUÇÃO DO VAZAMENTO DO TEXTO */
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
 
-.timeline h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.3rem;
-  color: #2c3e50;
-}
-
-.timeline p {
-  margin: 0;
-  line-height: 1.6;
-  color: #555;
-  background: #fff8f8;
-  padding: 16px 20px;
-  border-radius: 8px;
-  border-left: 3px solid #d9534f;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-}
+  .timeline p .shout-text {
+    display: block;
+    margin-top: 10px;
+    font-weight: 700;
+    color: var(--pink-vivid);
+    word-break: break-all; /* Garante a quebra exata das repetições continuas sem estourar o card */
+    line-height: 1.4;
+  }
 </style>
 </head>
 <body>
@@ -700,40 +701,66 @@
   </div>
 </section>
 
-<!-- HTML (Mantendo a sua estrutura exata de tags) -->
+<!-- HISTÓRIA / TIMELINE -->
 <section id="historia">
   <div class="eyebrow">Nossa história</div>
-  <h2 class="section-title">Cada momento, uma raiz</h2>
+  <h2 class="section-title">Cada momento nosso ❤️</h2>
   <ul class="timeline">
     <li>
       <div class="t-eyebrow">Capítulo 01</div>
       <h3>Como nos conhecemos</h3>
-      <p>Escreva aqui...</p>
+      <p>Um certo dia, na visita na casa do irmão João, eu comecei a te notar, e depois disso, nunca mais parei,
+        depois teve o estudo biblico no parque da cidade, e trocamos poucas palavras mas eu queria tanto falar com você
+        queria poder te conhecer, e depois de um tempo, a única coragem que eu criei, foi de mandar mensagem perguntando 
+        sobre o instagram do Samuel, com a esperança de você falar alguma coisa, mas não falou. E ai finalmente criei coragem 
+        e mandei um "oi ou nada haver??"kkkkkkkk mas foi bom, pois desde esse dia, nunca mais paramos de nos falar.</p>
     </li>
     <li>
       <div class="t-eyebrow">Capítulo 02</div>
       <h3>Encontros</h3>
-      <p>Escreva aqui...</p>
+      <p>Foi bem legal a primeira vez que saimos, eu depois de um dia fazendo entrega, fui no maça e mel pra comemorar o aniversário 
+        e foi muito incrivel. Depois disso, teve idas pra sua casa, você pra minha pra assistir a copa, e também saidas ao cinema, nicolandia, 
+        parque da cidade, e não lembro outros locais, mas sei que amei todos esses momentos que passamos juntos neles.
+      </p>
     </li>
     <li>
       <div class="t-eyebrow">Capítulo 03</div>
       <h3>Primeiro beijo</h3>
-      <p>Escreva aqui...</p>
+      <p>MEU DEUS, tava ansioso pra falar disso, foi muito incrível, estávamos na sua casa, e fomos jogar vôlei, mas nem jogamos direito, porque ficamos 
+        abraçadinhos e depois de muita luta pra criar coragem e segurando a vontade, aconteceu, demos um selinho, e foi muito bom, eu amei demaissss, foi um dos 
+        melhores dias da minha vida. Sobre o primero beijo de lingua, foi engraçado, porque eu tava morrendo de vergonha, e você também, mas eu tava conseguindo 
+        esconder, mas tava muito engraçado e fofo você com vergonha.
+      </p>
     </li>
     <li>
       <div class="t-eyebrow">Capítulo 04</div>
       <h3>Primeiro "eu te amo"</h3>
-      <p>Escreva aqui...</p>
-    </li>
+      <p>Chega ser delicado falar disso, porque no começo, eu tinha medo de falar, pois eu tinha acabado de sair de um relacionamento tóxico, e tinha medo de tudo 
+        acontecer de novo, mas em um certo dia você me disse o "zib zub zab", e eu fiquei muito feliz, pois eu ja queria dizer, mas eu tinha medo, e depois eu finalmente 
+        criei coragem e te disse ZIB ZUB ZAB, e ai foi evoluindo, e ficou finalmente como um:
+        <span class="shout-text">
+          EUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+          EUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+          TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+          AMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+          MINHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          PRINCESAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        </span>
+      </p>
+    </li>        
     <li>
       <div class="t-eyebrow">Capítulo 05</div>
       <h3>A viagem</h3>
-      <p>Escreva aqui...</p>
+      <p>A viagem foi incrivel, eu achei cada momento muito perfeito, até porque foi com você, cada risada, cada dança, cada momentos de lasanha, foi tudo perfeito, e 
+        nem sei como explicar em palavras, mas foi perfeito, obrigado por ter ido com a gente. 😍❤️💕</p>
     </li>
     <li>
       <div class="t-eyebrow">Capítulo 06</div>
       <h3>Presentes</h3>
-      <p>Escreva aqui...</p>
+      <p>Espero que você tenha gostado do Stitch, comprei pensando em você, pois me doia no coração saber que você estava com dor, então queria fazer o possível pra ajudar, 
+        e também queria dar algo pra você, que você gostasse muito, então comprei o justdance, e espero que goste desses presentes que estou te entregando agora. E MEU DEUS, 
+        AMEI O CADILLAC E O GENGAR. 😍
+      </p>
     </li>
   </ul>
 </section>
@@ -940,35 +967,34 @@
     
     <div class="cartinhas-grid">
       
-      <!-- AQUI VOCÊ PODE APAGAR MEU TEXTO E COLOCAR O SEU (mantendo as crases ` no começo e no final do texto) -->
-      <div class="cartinha-box" onclick="abrirCartinha('Abra quando estiver triste', `Meu amor, sinto muito que você esteja triste.<br><br>Queria poder te abraçar bem forte agora e tirar tudo o que está te machucando.<br><br>Lembre-se que você não está sozinha e que eu estou sempre aqui por você. Vai passar. Eu te amo muito!`, false, '🌧️')">
+      <div class="cartinha-box" onclick="abrirCartinha('Abra quando estiver triste', `Meu amor, me dói saber que você está triste... Se foi por minha causa, me perdoa, e me diga como melhorar, pois nunca na minha vida desejei te deixar triste... Se não foi, me fale, vou fazer o possível e o impossível pra tentar te deixar feliz de novo. E independente de porque está triste, nós vamos superar juntos, pois sempre seremos nós meu amor, e sempre estarei ao seu lado, POIS EU TE AMO MUITO❤️`, false, '🌧️')">
         <div class="cartinha-icon">🌧️</div>
         <div class="cartinha-title">Abra quando<br>estiver triste</div>
       </div>
       
-      <div class="cartinha-box" onclick="abrirCartinha('Abra quando estiver com sdds', `Eu também estou morrendo de saudade de você!<br><br>Cada segundo longe parece uma eternidade. Lê isso e vem correndo me mandar uma mensagem.`, true, '🥺')">
+      <div class="cartinha-box" onclick="abrirCartinha('Abra quando estiver com sdds', `Oh meu amor, saiba que eu também estou morrendo de saudade, e estou contando os segundos pra te ver, e quero muito falar logo com você, te ligar, contar do meu dia, e rir muito ao seu lado. Mas saiba, que acima de tudo, logo logo iremos nos ver, então não se preocupe, assim que eu puder, irei sempre te responder, então POR FAVOR, APERTA ESSE BOTÃO AQUI EMBAIXO, PRA EU SABER QUE É URGENTE, POIS SEMPRE ESTOU COM SAUDADES DE VOCÊ, ASSIM, COMO AGORA VOCÊ ESTÁ, EU TE AMO MUITO MEU AMORRRR`, true, '🥺')">
         <div class="cartinha-icon">🥺</div>
         <div class="cartinha-title">Abra quando<br>estiver com sdds</div>
       </div>
 
-      <div class="cartinha-box" onclick="abrirCartinha('Abra quando se sentir insegura', `Ei, para com isso!<br><br>Você é a mulher mais incrível, linda e inteligente que eu já conheci.<br><br>O mundo tem muita sorte de te ter, e eu tenho mais sorte ainda. Acredite no seu brilho, porque eu vejo ele todos os dias.`, false, '✨')">
+      <div class="cartinha-box" onclick="abrirCartinha('Abra quando se sentir insegura', `Ei, para com isso!<br><br>Você é a mulher mais incrível, linda e inteligente que eu já conheci.<br><br>O mundo tem muita sorte de te ter, e eu tenho mais sorte ainda, pois você é minha namorada😍. E me desculpe por acabar te deixando insegura, me diga por favor, como nunca mais te deixar assim. Mas saiba, sempre, que não há motivo disso, pois você é a única mulher nesse mundo, que eu QUERO CHAMAR DE MINHA, PORQUÊ EU TE AMOOOOO MUITO`, false, '✨')">
         <div class="cartinha-icon">✨</div>
         <div class="cartinha-title">Abra quando<br>se sentir insegura</div>
       </div>
 
-      <div class="cartinha-box" onclick="abrirCartinha('Abra quando estiver feliz', `Que delícia te ver feliz!<br><br>Seu sorriso é literalmente o meu presente favorito. Guarda essa sensação boa, comemora, pula, dança!<br><br>Eu celebro cada alegria sua com todo o meu coração.`, false, '🎉')">
+      <div class="cartinha-box" onclick="abrirCartinha('Abra quando estiver feliz', `Que bom que você está feliz meu amorrr, nossa de verdade, eu fico muito feliz com isso, e quero muito compartilhar esse momento feliz com você, e se eu for o motivo dessa felicidade, de verdade, que bom, saber disso, é a melhor sensação do universo, pois saber que eu sou o motivo dessa alegria, é muito bom, E PRA TE DEIXAR MAIS FELIZ, EU AMO MUITO VOCÊEEEEE`, false, '🎉')">
         <div class="cartinha-icon">🎉</div>
         <div class="cartinha-title">Abra quando<br>estiver feliz</div>
       </div>
 
-      <div class="cartinha-box" onclick="abrirCartinha('Abra quando não conseguir dormir', `Feche os olhos, respira bem fundo e imagina que eu estou aí do seu lado, fazendo cafuné no seu cabelo até você pegar no sono.<br><br>Pensa nas coisas boas que vivemos hoje e nos nossos planos de amanhã.<br><br>Boa noite, meu amor.`, false, '🌙')">
+      <div class="cartinha-box" onclick="abrirCartinha('Abra quando não conseguir dormir', `Oh meu amor, fecha os olhos, respira, e pensa em mim, pensa nos nossos momentos juntos, e tenta relaxar, se acalmar, e se eu não fui dormir ainda, me fala por favor, ai nós conversamos até você ter sono, e se eu já fui dormir, manda aúdio, falando das coisas mais aleatórias possíveis, até você conseguir dormir, não vou poder ajudar muito nesse momento, mas saiba, que independente do momento, eu sempre irei estar contigo, nem que seja por essa carta, E SAIBA QUE EU TE AMO MUITO`, false, '🌙')">
         <div class="cartinha-icon">🌙</div>
         <div class="cartinha-title">Abra quando não<br>conseguir dormir</div>
       </div>
 
-      <div class="cartinha-box" onclick="abrirCartinha('Quiser saber o quanto te amo', `Eu te amo mais do que as palavras cabem.<br><br>Te amo nos detalhes, no seu sorriso, nas suas manias. Você mudou o meu mundo pra muito melhor.<br><br>Você é o amor da minha vida, hoje e sempre.`, false, '❤️')">
+      <div class="cartinha-box" onclick="abrirCartinha('Quando quiser saber o quanto te amo', `Eu te amo mais do que as palavras podem expressar.<br><br>Amo cada um dos seus detalhes, seu sorriso, seus olhinhos, seu cabelo, seu jeitinho, sua forma de servir a Deus, suas manias, e simplesmente AMO TUDO EM VOCÊ. Eu amo você mais do que é possível expressar, mais do que existem de grãos de areia no deserto do Saara, ou mais do que existe de estrelas no universo, amo mais do que toda a quantidade de água no mundo, eu te amo tanto, que até Júpiter, que é o maior planeta do sistema solar, se sente pequeno, que até o juntando a via lactea, e a galaxia de andromeda juntas, se sentem pequenas. Você mudou o meu mundo pra muito melhor meu amorr.<br><br>Você é o amor da minha vida, hoje e sempre. E mais uma vez eu te agradeço por ter entrado na minha vida`, false, '❤️')">
         <div class="cartinha-icon">❤️</div>
-        <div class="cartinha-title">Quiser saber o<br>quanto te amo</div>
+        <div class="cartinha-title">Quando quiser saber o<br>quanto te amo</div>
       </div>
 
     </div>
@@ -1027,8 +1053,8 @@
 
 <script>
   // TELEFONES
-  const NUMERO_PEDRO = "5561996803803"; // As mensagens da Laura virão para o seu número!
-  const NUMERO_LAURA = "5561995124309"; // O número dela deixei salvo aqui caso você queira usar pra algo depois :)
+  const NUMERO_PEDRO = "5561996803803"; 
+  const NUMERO_LAURA = "5561995124309"; 
 
   // AUTOPLAY MÚSICA
   const audio = document.getElementById('audio-player');
@@ -1265,11 +1291,10 @@
     }
   }
 
-  // NOVO: ABRIR CARTINHAS DE EMERGÊNCIA
+  // CARTINHAS DE EMERGÊNCIA
   function abrirCartinha(title, body, isSaudade, emoji) {
     let actionBtn = `<button onclick="closeModal()" class="modal-btn">Guardar no coração ❤️</button>`;
 
-    // Se for a cartinha de saudade, adiciona botão de mandar mensagem no zap!
     if (isSaudade) {
       const msg = encodeURIComponent("Amor, abri a cartinha da saudade... tô com muita saudade de você! 🥰");
       const linkZap = `https://wa.me/${NUMERO_PEDRO}?text=${msg}`;
@@ -1277,7 +1302,6 @@
                    <button onclick="closeModal()" class="modal-btn secondary">Guardar</button>`;
     }
 
-    // Formatando o texto da cartinha para ficar com cara de papel/escrita
     const formattedBody = `
       <p style="font-family: 'Fraunces', serif; font-size: 1.1rem; color: #475569; text-align: left; line-height: 1.6; margin-bottom: 1.5rem;">
         ${body}
@@ -1304,24 +1328,24 @@
 
     window.open(`https://wa.me/${NUMERO_PEDRO}?text=${encodeURIComponent(finalMessage)}`, '_blank');
   }
-  
-  // JavaScript para revelar os capítulos conforme você rola a página
-document.addEventListener("DOMContentLoaded", () => {
-  const items = document.querySelectorAll(".timeline li");
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
+  // Revelação dos capítulos no scroll
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".timeline li");
 
-  items.forEach((item) => observer.observe(item));
-});
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    items.forEach((item) => observer.observe(item));
+  });
 </script>
 </body>
 </html>
