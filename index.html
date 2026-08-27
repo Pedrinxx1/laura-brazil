@@ -168,8 +168,21 @@
     padding: 0; 
     position: relative; 
     z-index: 2; 
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
   }
-  .letter-paper .shout { font-weight: 700; color: var(--pink-vivid); background: rgba(244, 184, 212, 0.35); padding: 2px 6px; border-radius: 4px;}
+  .letter-paper .shout { 
+    font-weight: 700; 
+    color: var(--pink-vivid); 
+    background: rgba(244, 184, 212, 0.35); 
+    padding: 2px 6px; 
+    border-radius: 4px;
+    display: inline;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
   .letter-signoff { font-style: italic; font-size: 1.2rem; color: var(--blue-vivid); font-weight: 700; text-transform: uppercase; text-align: right; margin-bottom: 0 !important; }
 
   .washi-tape { position: absolute; top: -14px; left: 50%; transform: translateX(-50%) rotate(-2deg); width: 140px; height: 32px; background: linear-gradient(90deg, rgba(232,63,140,0.75), rgba(74,144,226,0.75)); box-shadow: 0 3px 6px rgba(0,0,0,0.1); z-index: 4; border-radius: 2px; backdrop-filter: blur(2px);}
